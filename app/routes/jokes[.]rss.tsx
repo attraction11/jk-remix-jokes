@@ -1,3 +1,6 @@
+/* Resource Routes 
+  有时我们希望我们的路由渲染 HTML 文档以外的东西。
+*/
 import type { LoaderFunction } from "@remix-run/node";
 
 import { db } from "~/utils/db.server";

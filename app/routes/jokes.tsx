@@ -1,4 +1,3 @@
-import type { User } from "@prisma/client";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -34,8 +33,8 @@ export const loader: LoaderFunction = async ({
   const user = await getUser(request);
 
   const data: LoaderData = {
-    jokeListItems,
     user,
+    jokeListItems,
   };
   return json(data);
 };

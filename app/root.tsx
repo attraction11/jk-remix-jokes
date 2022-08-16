@@ -55,7 +55,9 @@ function Document({
   title?: string;
 }) {
   return (
-    <html lang="en">
+    // <html lang="en">
+    // https://github.com/remix-run/remix/issues/1077
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <Meta />
         <title>{title}</title>
@@ -78,6 +80,8 @@ export default function App() {
   );
 }
 
+/* 当您在加载程序中决定无法继续渲染您想要的 UI（需要身份验证、未找到记录等）时，
+捕获边界会呈现，因此您会抛出响应并让一些捕获边界沿树向上 处理它。 */
 export function CatchBoundary() {
   const caught = useCatch();
 
@@ -94,6 +98,9 @@ export function CatchBoundary() {
   );
 }
 
+/* 当您的应用程序抛出错误并且您不知道它会发生时，会呈现错误边界。 
+大多数应用程序只是空白或让微调器永远旋转。 
+在remix错误边界呈现时，您可以对其进行精细控制。 */
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
 
